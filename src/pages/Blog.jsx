@@ -13,7 +13,12 @@ const Blog = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Blog Posts</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold">Blog Posts</h1>
+        <Button asChild>
+          <Link to="/add-post">Add New Post</Link>
+        </Button>
+      </div>
       <div className="grid gap-6">
         {blogPosts.map((post) => (
           <Card key={post.id}>
