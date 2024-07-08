@@ -24,6 +24,7 @@ const Layout = () => {
       <main className="flex-grow overflow-auto">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 };
@@ -35,7 +36,7 @@ const DesktopNav = () => (
       className="flex items-center gap-2 text-lg font-semibold md:text-base"
     >
       <Package2 className="h-6 w-6" />
-      <span className="sr-only">Acme Inc</span>
+      <span>My Blog</span>
     </NavItem>
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
@@ -60,7 +61,7 @@ const MobileNav = () => (
           className="flex items-center gap-2 text-lg font-semibold"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span>My Blog</span>
         </NavItem>
         {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
@@ -106,6 +107,27 @@ const NavItem = ({ to, children, className }) => (
   >
     {children}
   </NavLink>
+);
+
+const Footer = () => (
+  <footer className="border-t bg-background py-6 px-4 md:px-6">
+    <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:flex-row">
+      <p className="text-center text-sm text-gray-600">
+        © 2023 My Blog. All rights reserved.
+      </p>
+      <div className="flex gap-4">
+        <a href="#" className="text-gray-600 hover:text-gray-900">
+          Twitter
+        </a>
+        <a href="#" className="text-gray-600 hover:text-gray-900">
+          GitHub
+        </a>
+        <a href="#" className="text-gray-600 hover:text-gray-900">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </footer>
 );
 
 export default Layout;
