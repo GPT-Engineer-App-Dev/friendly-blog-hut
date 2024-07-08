@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const Layout = () => {
   return (
@@ -19,7 +20,10 @@ const Layout = () => {
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between">
         <DesktopNav />
         <MobileNav />
-        <UserMenu />
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          <UserMenu />
+        </div>
       </header>
       <main className="flex-grow overflow-auto">
         <Outlet />
@@ -68,6 +72,9 @@ const MobileNav = () => (
             {item.title}
           </NavItem>
         ))}
+        <div className="pt-4">
+          <ThemeToggle />
+        </div>
       </nav>
     </SheetContent>
   </Sheet>

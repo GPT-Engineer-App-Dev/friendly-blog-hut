@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import AddBlogPost from "./pages/AddBlogPost";
+import { ThemeProvider } from "./components/theme-provider";
 
 const queryClient = new QueryClient();
 
@@ -43,20 +44,22 @@ export const navItems = [
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Index />} />
-              <Route path="about" element={<About />} />
-              <Route path="blog" element={<Blog />} />
-              <Route path="add-post" element={<AddBlogPost />} />
-              <Route path="contact" element={<Contact />} />
-            </Route>
-          </Routes>
-        </Router>
-      </TooltipProvider>
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        <TooltipProvider>
+          <Toaster />
+          <Router>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Index />} />
+                <Route path="about" element={<About />} />
+                <Route path="blog" element={<Blog />} />
+                <Route path="add-post" element={<AddBlogPost />} />
+                <Route path="contact" element={<Contact />} />
+              </Route>
+            </Routes>
+          </Router>
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
